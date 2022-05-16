@@ -6,12 +6,11 @@ const morgan=require("morgan")
 require("dotenv").config()
 const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/planets")
-const launchRouter=require("./routes/launches")
+const launchRoute=require("./routes/launches")
 
 
 const app = express();
 
-const whitelist = ['http://localhost:3000', 'http://localhost:8080']
 
 app.use(cors())
 app.use(morgan("combined"))
@@ -19,6 +18,7 @@ app.use(morgan("combined"))
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
 app.use(planetsRoute)
+app.use(launchRoute)
 
 app.get("/",(req,res)=>{
   res.sendFile(path.join(__dirname, "public", "index.html"))
