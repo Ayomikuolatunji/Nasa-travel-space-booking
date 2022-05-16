@@ -1,7 +1,7 @@
 const launches= new Map()
 
 const launch={
-    flitNumber:100,
+    flightNumber:100,
     mission:"kepler Exploration X",
     rocket:"Explorer IS1",
     launchDate:new Date("December 27, 2030"),
@@ -11,7 +11,7 @@ const launch={
     success:true
 }
 
-launches.set(launch.flitNumber, launch)
+launches.set(launch.flightNumber, launch)
 
 module.exports={
     launches
