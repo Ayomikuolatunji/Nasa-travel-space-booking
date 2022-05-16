@@ -22,7 +22,10 @@ const getLaunches=()=>{
 const addLaunch=(launch)=>{
     launchFlightNumber++;
     launches.set(launch.flightNumber, Object.assign(launch,{
-      flightNumber:launchFlightNumber
+      flightNumber:launchFlightNumber,
+      customer:["MTP", "NASA"],
+      upcoming:true,
+      success:true
     }))
 }
 
