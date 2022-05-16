@@ -20,17 +20,16 @@ const corsOptions = {
   }
 }
 
-app.use(cors(corsOptions))
+// app.use(cors())
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "public")))
+app.use(express.static("public"))
 
 
 
 app.use(planetsRoute)
-// "install server": "npm install --prefix server",
-// "install client": "npm install --prefix client",
-// "install ": "npm install server && npm install client",
+
 
  const load=async()=>{
   await loadData()
