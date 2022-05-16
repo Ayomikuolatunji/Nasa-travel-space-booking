@@ -4,7 +4,7 @@ const  getAllLaunches=require("../controller/getLaunches")
 
 const router=express.Router()
 
-router.get("/",getAllLaunches)
+router.get("/launches",getAllLaunches)
 
 
 module.exports=router
