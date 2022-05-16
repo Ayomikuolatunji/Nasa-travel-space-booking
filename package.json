@@ -6,6 +6,7 @@
   "scripts": {
     "install-server": "cd nasa-backend && npm install",
     "install-client": "cd nasa-frontend && npm install",
+    "install": "npm run install-server & npm run install-client",
     "server": "cd nasa-backend &&  npm run watch",
     "client":"cd nasa-frontend && npm start",
     "watch":"npm run server & npm run client"
