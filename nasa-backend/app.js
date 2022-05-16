@@ -2,6 +2,7 @@ const express = require('express');
 const http=require("http")
 const path=require("path")
 const cors=require("cors")
+const morgan=require("morgan")
 require("dotenv").config()
 const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/planets")
@@ -20,7 +21,8 @@ const corsOptions = {
   }
 }
 
-// app.use(cors())
+app.use(cors())
+app.use(morgan("combined"))
 
 app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
@@ -30,14 +32,15 @@ app.get("/",(req,res)=>{
   res.sendFile(path.join(__dirname, "public", "index.html"))
 })
 
- const load=async()=>{
+const load=async()=>{
   await loadData()
- }
 
- load()
+  const server=http.createServer(app)
 
-const server=http.createServer(app)
+  server.listen(process.env.PORT,()=>{
+      console.log(`app running on localhost ${process.env.PORT}`);
+  })
 
-server.listen(process.env.PORT,()=>{
-    console.log(`app running on localhost ${process.env.PORT}`);
-})
+}
+
+load()

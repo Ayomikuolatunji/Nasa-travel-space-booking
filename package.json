@@ -8,12 +8,14 @@
     "install-client": "cd nasa-frontend && npm install",
     "install": "npm run install-server & npm run install-client",
     "server": "cd nasa-backend &&  npm run watch",
-    "client":"cd nasa-frontend && npm start",
-    "deploy":"cd nasa-frontend && npm run build &  npm run server",
-    "watch":"npm run server & npm run client"
+    "client": "cd nasa-frontend && npm start",
+    "deploy": "cd nasa-frontend && npm run build &  npm run server",
+    "watch": "npm run server & npm run client"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
 }
-
