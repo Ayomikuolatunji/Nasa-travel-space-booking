@@ -23,12 +23,13 @@ const addLaunch=(launch)=>{
     launchFlightNumber++;
     launches.set(launch.flightNumber, Object.assign(launch,{
       flightNumber:launchFlightNumber,
-      customer:["MTP", "NASA"],
+      customer:["SPACE", "MAX"],
       upcoming:true,
       success:true
     }))
 }
 
 module.exports={
-    getLaunches
+    getLaunches,
+    addLaunch
 }
