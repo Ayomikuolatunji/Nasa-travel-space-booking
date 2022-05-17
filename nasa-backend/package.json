@@ -11,7 +11,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "watch": "nodemon app.js"
+    "test": "jest",
+    "watch": "nodemon app.js",
+    "start": "start app.js"
   },
   "keywords": [],
   "author": "",

@@ -19,9 +19,6 @@ const launchExist=(launch)=>{
      return launches.has(launch)
 }
 
-
-console.log(launches);
-
 const getLaunches=()=>{
     return Array.from(launches.values())
 }
