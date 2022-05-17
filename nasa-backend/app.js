@@ -1,15 +1,14 @@
-const express = require('express');
+const express=require("express")
 const http=require("http")
 const path=require("path")
 const cors=require("cors")
 const morgan=require("morgan")
 require("dotenv").config()
+const app=require("./server")
 const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/planets")
 const launchRoute=require("./routes/launches")
 
-
-const app = express();
 
 
 app.use(cors())
