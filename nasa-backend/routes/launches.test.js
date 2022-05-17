@@ -1,12 +1,12 @@
-const request = require('supertest');
+const requests = require('supertest');
 const express = require('express');
 
 const app = express();
 
 describe("GET LAUNCHES",()=>{
     test('should test launch get api', () => { 
-
-        })
+      const request=requests(app)
+   })
 })
 
 describe("POST LAUNCH",()=>{
