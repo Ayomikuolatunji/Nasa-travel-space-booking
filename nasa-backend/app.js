@@ -3,18 +3,19 @@ const http=require("http")
 const path=require("path")
 const cors=require("cors")
 const morgan=require("morgan")
+const bodyParser=require("body-parser");
 require("dotenv").config()
 const app=require("./server")
 const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/planets")
 const launchRoute=require("./routes/launches")
 
+app.use(express.json())
 
-
+app.use(bodyParser.json())
 app.use(cors())
 // app.use(morgan("combined"))
 
-app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")))
 app.use(planetsRoute)
 app.use(launchRoute)

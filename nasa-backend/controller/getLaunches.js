@@ -2,18 +2,18 @@ const {getLaunches,addLaunch,launchExist, abortLaunchWithID}=require("../model/l
 
 
 const getAllLaunches=(req,res,next)=>{
-    res.status(200).json(getLaunches())
+    return res.status(200).json(getLaunches())
 }
 
 
 const postLaunch=(req,res,next)=>{
     const launch=req.body
 
-    if(!launch.mission || !launch.launchDate || !launch.rocket){
-        res.status(400).json({
-            error:"bad request"
-        })
-    }
+    // if(!launch.mission || !launch.launchDate || !launch.rocket){
+    //     res.status(400).json({
+    //         error:"bad request"
+    //     })
+    // }
     launch.launchDate=new Date(launch.launchDate)
     addLaunch(launch)
 

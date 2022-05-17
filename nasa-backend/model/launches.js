@@ -3,7 +3,7 @@ const launches= new Map()
 let launchFlightNumber=100
 
 const launch={
-    flightNumber:launchFlightNumber,
+    flightNumber:100,
     mission:"kepler Exploration X",
     rocket:"Explorer IS1",
     launchDate:new Date("December 27, 2030"),
@@ -25,7 +25,7 @@ const getLaunches=()=>{
 
 const addLaunch=(launch)=>{
     launchFlightNumber++;
-   return launches.set(launch.flightNumber, Object.assign(launch,{
+    launches.set(launch.flightNumber, Object.assign(launch,{
       flightNumber:launchFlightNumber,
       customers:["SPACE", "MAX"],
       upcoming:true,
