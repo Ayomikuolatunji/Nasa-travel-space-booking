@@ -21,8 +21,8 @@ const postLaunch=(req,res,next)=>{
 }
 
 const deleteLaunch=(req,res)=>{
-    const requestId=req.params.id
-    if(!launchExist()){
+    const requestId=+req.params.id
+    if(!launchExist(requestId)){
         res.status(400).json({
             error:"bad request"
         })
