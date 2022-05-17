@@ -35,7 +35,9 @@ const addLaunch=(launch)=>{
 }
 
 const abortLaunchWithID=(launchId)=>{
-
+   const getLaunch= launch.delete(launchId)
+   getLaunch.upcoming=false
+   getLaunch.success=false
 }
 
 module.exports={
