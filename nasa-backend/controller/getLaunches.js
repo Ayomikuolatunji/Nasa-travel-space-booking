@@ -20,4 +20,8 @@ const postLaunch=(req,res,next)=>{
     return res.status(201).json(launch)
 }
 
-module.exports={postLaunch, getAllLaunches}
+const deleteLaunch=()=>{
+
+}
+
+module.exports={postLaunch, getAllLaunches,deleteLaunch}
