@@ -40,7 +40,7 @@ const Upcoming = props => {
           <td>{new Date(launch.launchDate).toDateString()}</td>
           <td>{launch.mission}</td>
           <td>{launch.rocket}</td>
-          <td>{launch.target}</td>
+          <td>{launch.destination}</td>
         </tr>;
       });
   }, [launches, abortLaunch, classes.link]);
