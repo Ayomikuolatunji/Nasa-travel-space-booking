@@ -16,5 +16,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "Nasa backend codebase dependencies pacakges"
+  "description": "Nasa backend codebase dependencies pacakges",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
 }
