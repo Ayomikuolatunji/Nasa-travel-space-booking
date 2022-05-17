@@ -8,7 +8,7 @@ const launch={
     rocket:"Explorer IS1",
     launchDate:new Date("December 27, 2030"),
     destination:"Kepler-442 b",
-    customer:["MTP", "NASA"],
+    customers:["MTP", "NASA"],
     upcoming:true,
     success:true
 }
@@ -20,6 +20,8 @@ const launchExist=(launch)=>{
 }
 
 
+console.log(launches);
+
 const getLaunches=()=>{
     return Array.from(launches.values())
 }
@@ -28,7 +30,7 @@ const addLaunch=(launch)=>{
     launchFlightNumber++;
     launches.set(launch.flightNumber, Object.assign(launch,{
       flightNumber:launchFlightNumber,
-      customer:["SPACE", "MAX"],
+      customers:["SPACE", "MAX"],
       upcoming:true,
       success:true
     }))

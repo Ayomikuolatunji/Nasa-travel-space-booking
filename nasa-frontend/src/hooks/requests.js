@@ -39,13 +39,9 @@ async function httpSubmitLaunch(launch) {
 
 async function httpAbortLaunch(id) {
     try {
-      const res=await fetch(`${localhost}/launches/${id}`,{
+       return await fetch(`http://localhost:8080/launches/${id}`,{
         method:"delete",
-        headers:{
-          "Content-Type":"application/json"
-        }
       })
-      return await res.json()
     } catch (error) {
         return {
           ok:false
