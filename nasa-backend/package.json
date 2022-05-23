@@ -7,7 +7,8 @@
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
     "helmet": "^5.0.2",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.16",
+    "pm2": "^5.2.0"
   },
   "name": "nodejs",
   "version": "1.0.0",
@@ -16,7 +17,8 @@
     "test": "jest",
     "test-watch": "jest --watch",
     "watch": "nodemon app.js",
-    "start": "start app.js"
+    "start": "start app.js",
+    "clauster": "pm2 start app.js -i max"
   },
   "keywords": [],
   "author": "",
