@@ -34,20 +34,29 @@ describe("POST LAUNCH",()=>{
     //     expect(responseDate).toBe(launchRes)
     //     expect(res.body).toMatchObject(launchData)    
     //  })
-    test('should error when post a launch with statusCode 400 with', () => { 
-        
-    })
-    test('should error when post a launch with statusCode 400 with', () => { 
-          
-    })
-})
-
-
-describe('POST /users', function() {
+    const houseForSale = {
+        bath: true,
+        bedrooms: 4,
+        kitchen: {
+          amenities: ['oven', 'stove', 'washer'],
+          area: 20,
+          wallColor: 'white',
+        },
+      };
+      const desiredHouse = {
+        bath: true,
+        kitchen: {
+          amenities: ['oven', 'stove', 'washer'],
+          wallColor: expect.stringMatching(/white|yellow/),
+        },
+      };
     it('responds with json',async()=>{
         const res= requests(app)
         .post("/users")
         .set("Accept", "application.json")
-        .send({name:"ayomiku"})
+        .send(houseForSale)
+         expect(houseForSale).toMatchObject(desiredHouse);
     });
-  });
+
+})
+

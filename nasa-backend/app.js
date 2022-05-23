@@ -22,7 +22,7 @@ app.use(launchRoute)
 
 app.post("/users",(req,res,next)=>{
   const name=req.body.name
-    res.status(200).json(name)
+    res.status(201).json(name)
 })
 
 app.get("/*",(req,res)=>{
