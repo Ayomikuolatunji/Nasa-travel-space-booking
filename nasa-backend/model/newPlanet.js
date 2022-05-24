@@ -1,9 +1,7 @@
-
-
 const {parse}=require("csv-parse")
 const fs=require("fs")
 const path=require("path")
-const planents=require("./newPlanet")
+const planets=require("./planets")
 
 
 const habitablePlanet=[]
@@ -22,9 +20,7 @@ const loadData=()=>{
         }))
         .on("data",(data)=>{
             if(isHabitable(data)){
-              habitablePlanet.push(data)
-              planents.create(data)
-              
+                updatePlanets(data)
             }
         })
         .on("error",(error)=>{
@@ -37,6 +33,19 @@ const loadData=()=>{
     })
 }
 
+async function updatePlanets(data){
+    try {
+        await planets.updateOne({
+            kepler_name:data.kepler_name
+        },{
+            kepler_name:data.kepler_name
+        },{
+            upsert:true
+        })
+    } catch (error) {
+         console.log(error.message);
+    }
+}
 
   module.exports={
      loadData,
