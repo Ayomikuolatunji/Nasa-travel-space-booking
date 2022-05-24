@@ -9,46 +9,28 @@ const postLaunch=async(req,res,next)=>{
     //     })
     // }
      const findLaunchNum=await lauches.findOne({launch:lauches.flightNumber})
-     let outputLanuch;
+     let newLaunchNum=launch.flightNumber
      if(findLaunchNum){
-         try {
-            const newLaunch=await lauches.create({
-                flightNumber:launch.flightNumber+1,
-                mission:"kepler Exploration X",
-                rocket:"Explorer IS1",
-                launchDate:launch.launchDate,
-                target:launch.target,
-                destination:"Kepler-442 b",
-                customers:["MTP", "NASA"],
-                upcoming:true,
-                success:true
-             }) 
-             outputLanuch=newLaunch
-         } catch (error) {
-             
-         }
-     }else{
-        try {
-            const newLaunch=await lauches.create({
-                flightNumber:launch.flightNumber,
-                mission:"kepler Exploration X",
-                rocket:"Explorer IS1",
-                launchDate:launch.launchDate,
-                target:launch.target,
-                destination:"Kepler-442 b",
-                customers:["MTP", "NASA"],
-                upcoming:true,
-                success:true
-             })
-             outputLanuch=newLaunch
-        } catch (error) {
-             console.log(err.message);
-        }
+       newLaunchNum++
      }
-
+     try {
+        const newLaunch=await lauches.create({
+            flightNumber:newLaunchNum,
+            mission:"kepler Exploration X",
+            rocket:"Explorer IS1",
+            launchDate:launch.launchDate,
+            target:launch.target,
+            destination:"Kepler-442 b",
+            customers:["MTP", "NASA"],
+            upcoming:true,
+            success:true
+         })
+              
+     return res.status(201).json(newLaunch)
+    } catch (error) {
+         console.log(err.message);
+    }
           
-     
-     return res.status(201).json(outputLanuch)
 }
 
 
