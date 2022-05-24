@@ -8,7 +8,7 @@ require("dotenv").config()
 const mongosoe =require("mongoose")
 const app=require("./server")
 const planetsRoute=require("./routes/planents")
-// const {loadData}=require("./model/planets")
+const {loadData}=require("./model/newPlanet")
 const launchRoute=require("./routes/launches")
 
 app.use(express.json())
@@ -36,6 +36,7 @@ const load=async()=>{
     useUnifiedTopology: true 
   })
   .then(()=>{
+    loadData()
     console.log("connected to the database");
     const server=http.createServer(app)
 
