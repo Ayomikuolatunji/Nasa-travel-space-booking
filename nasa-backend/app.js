@@ -5,6 +5,7 @@ const cors=require("cors")
 const morgan=require("morgan")
 const bodyParser=require("body-parser");
 require("dotenv").config()
+const mongosoe =require("mongoose")
 const app=require("./server")
 const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/planets")
@@ -31,11 +32,20 @@ app.get("/*",(req,res)=>{
 
 const load=async()=>{
   await loadData()
+  mongosoe.connect(process.env.MONGODB_KEY,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+  })
+  .then(()=>{
+    console.log("connected to the database");
+    const server=http.createServer(app)
 
-  const server=http.createServer(app)
-
-  server.listen(process.env.PORT,()=>{
-      console.log(`app running on localhost ${process.env.PORT}`);
+    server.listen(process.env.PORT,()=>{
+        console.log(`app running on localhost ${process.env.PORT}`);
+    })
+  })
+  .catch(err=>{
+    console.log(err.message);
   })
 
 }
