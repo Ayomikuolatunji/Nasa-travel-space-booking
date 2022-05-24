@@ -1,4 +1,4 @@
-const lauches=require("../model/newLaunches")
+const lauches=require("../model/launches")
 const planets = require("../model/planets")
 
 const postLaunch=async(req,res,next)=>{

@@ -1,6 +1,4 @@
-const {launchExist, abortLaunchWithID}=require("../model/launches")
-
-const lauches=require("../model/newLaunches")
+const lauches=require("../model/launches")
 
 
 const getAllLaunches=async(req,res,next)=>{
@@ -9,15 +7,4 @@ const getAllLaunches=async(req,res,next)=>{
 }
 
 
-const deleteLaunch=(req,res)=>{
-    const requestId=+req.params.id
-    if(!launchExist(requestId)){
-        res.status(400).json({
-            error:"bad request"
-        })
-    }
-    const aborted= abortLaunchWithID(requestId)
-    return res.status(200).json(aborted)
-}
-
-module.exports={getAllLaunches,deleteLaunch}
+module.exports={getAllLaunches}

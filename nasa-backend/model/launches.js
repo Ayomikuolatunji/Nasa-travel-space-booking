@@ -1,49 +1,46 @@
+const mongoose=require("mongoose")
 
-const launches= new Map()
+const Schema=mongoose.Schema
 
-let launchFlightNumber=100
-
-const launch={
-    flightNumber:100,
-    mission:"kepler Exploration X",
-    rocket:"Explorer IS1",
-    launchDate:new Date("December 27, 2030"),
-    destination:"Kepler-442 b",
+const launchesSchema=new Schema({
+    flightNumber:{
+        type:Number,
+        required:true
+    },
+    mission:{
+        type:String,
+        required:true,
+    },
+    rocket:{
+        type:String,
+        required:true
+    },
+    launchDate:{
+        type:Date,
+        required:true
+    },
+    destination:{
+        type:String,
+        required:true
+    },
+    target:{
+       type:String, 
+       required:true
+    },
     customers:["MTP", "NASA"],
-    upcoming:true,
-    success:true
-}
+    upcoming:{
+        type:Boolean,
+        required:true
+    },
+    success:{
+        type:Boolean,
+        required:true,
+        default:true
+    },
+    customers:{
+        type:[String],
+    }
+})
 
-launches.set(launch.flightNumber, launch)
 
-const launchExist=(launch)=>{
-     return launches.has(launch)
-}
-
-const getLaunches=()=>{
-    return Array.from(launches.values())
-}
-
-const addLaunch=(launch)=>{
-    launchFlightNumber++;
-    launches.set(launch.flightNumber, Object.assign(launch,{
-      flightNumber:launchFlightNumber,
-      customers:["SPACE", "MAX"],
-      upcoming:true,
-      success:true
-    }))
-}
-
-const abortLaunchWithID=(launchId)=>{
-   const aborted= launches.get(launchId)
-   aborted.upcoming=false
-   aborted.success=false
-   return aborted
-}
-
-module.exports={
-    getLaunches,
-    addLaunch,
-    launchExist,
-    abortLaunchWithID
-}
+module.exports=mongoose.model("launches",launchesSchema)
