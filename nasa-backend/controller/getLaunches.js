@@ -1,24 +1,13 @@
-const {getLaunches,addLaunch,launchExist, abortLaunchWithID}=require("../model/launches")
+const {launchExist, abortLaunchWithID}=require("../model/launches")
+
+const lauches=require("../model/newLaunches")
 
 
-const getAllLaunches=(req,res,next)=>{
-    return res.status(200).json(getLaunches())
+const getAllLaunches=async(req,res,next)=>{
+     const allLaunch=await lauches.find({})
+     return res.status(200).json(allLaunch)
 }
 
-
-const postLaunch=(req,res,next)=>{
-    const launch=req.body
-
-    // if(!launch.mission || !launch.launchDate || !launch.rocket){
-    //     res.status(400).json({
-    //         error:"bad request"
-    //     })
-    // }
-    launch.launchDate=new Date(launch.launchDate)
-    addLaunch(launch)
-
-    return res.status(201).json(launch)
-}
 
 const deleteLaunch=(req,res)=>{
     const requestId=+req.params.id
@@ -31,4 +20,4 @@ const deleteLaunch=(req,res)=>{
     return res.status(200).json(aborted)
 }
 
-module.exports={postLaunch, getAllLaunches,deleteLaunch}
+module.exports={getAllLaunches,deleteLaunch}

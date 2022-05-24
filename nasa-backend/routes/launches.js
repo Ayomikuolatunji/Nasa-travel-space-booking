@@ -1,5 +1,6 @@
 const express=require("express")
-const  {getAllLaunches,postLaunch, deleteLaunch}=require("../controller/getLaunches")
+const  {getAllLaunches, deleteLaunch}=require("../controller/getLaunches")
+const postLaunch=require("../controller/createLaunch")
 
 
 const router=express.Router()
