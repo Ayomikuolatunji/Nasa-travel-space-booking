@@ -1,33 +1,39 @@
 const lauches=require("../model/newLaunches")
+const planets = require("../model/planets")
 
 const postLaunch=async(req,res,next)=>{
     const launch=req.body
-
-    // if(!launch.mission || !launch.launchDate || !launch.rocket){
-    //     res.status(400).json({
-    //         error:"bad request"
-    //     })
-    // }
-     const findLaunchNum=await lauches.findOne({launch:lauches.flightNumber})
-     let newLaunchNum=launch.flightNumber
-     if(findLaunchNum){
-       newLaunchNum++
+    
+    if(!launch.mission || !launch.launchDate || !launch.rocket){
+        res.status(400).json({
+            error:"bad request"
+        })
+    }
+    const findOne=await planets.findOne({
+        kepler_name:launch.destination
+    })
+    if(!findOne){
+        throw new Error("No matching planets was found")
+    }
+     let newLaunchNum=99
+     if(launch){
+       newLaunchNum+1
      }
      try {
         const newLaunch=await lauches.create({
             flightNumber:newLaunchNum,
-            mission:"kepler Exploration X",
-            rocket:"Explorer IS1",
+            mission:launch.mission,
+            rocket:launch.rocket,
             launchDate:launch.launchDate,
-            target:launch.target,
-            destination:"Kepler-442 b",
+            target:launch.destination,
+            destination:launch.destination,
             customers:["MTP", "NASA"],
             upcoming:true,
             success:true
          })
               
      return res.status(201).json(newLaunch)
-    } catch (error) {
+    } catch (err) {
          console.log(err.message);
     }
           

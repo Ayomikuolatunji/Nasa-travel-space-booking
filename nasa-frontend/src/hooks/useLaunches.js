@@ -27,14 +27,14 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
     const mission = data.get("mission-name");
     const rocket = data.get("rocket-name");
     const destination = data.get("planets-selector");
+    const target=destination
     const response = await httpSubmitLaunch({
       launchDate,
       mission,
       rocket,
-      destination
+      destination,
+      target:"Kepler-1652 b"
     });
-
-    console.log(response);
 
     // TODO: Set success based on response.
     const success = response.Ok;
