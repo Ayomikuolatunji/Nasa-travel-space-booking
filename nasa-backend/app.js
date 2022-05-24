@@ -8,7 +8,7 @@ require("dotenv").config()
 const mongosoe =require("mongoose")
 const app=require("./server")
 const planetsRoute=require("./routes/planents")
-const {loadData}=require("./model/planets")
+// const {loadData}=require("./model/planets")
 const launchRoute=require("./routes/launches")
 
 app.use(express.json())
@@ -31,7 +31,6 @@ app.get("/*",(req,res)=>{
 })
 
 const load=async()=>{
-  await loadData()
   mongosoe.connect(process.env.MONGODB_KEY,{
     useNewUrlParser: true,
     useUnifiedTopology: true 
