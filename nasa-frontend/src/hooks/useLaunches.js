@@ -19,9 +19,11 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
   useEffect(() => {
    async function get(){
     const fetchedLaunches = await httpGetLaunches();
+    console.log(fetchedLaunches);
     console.log(fetch)
    }
-  }, [getLaunches]);
+   get()
+  }, []);
 
   const submitLaunch = useCallback(async (e) => {
     e.preventDefault();
