@@ -2,14 +2,14 @@ const express=require("express")
 const http=require("http")
 const path=require("path")
 const cors=require("cors")
-const morgan=require("morgan")
+// const morgan=require("morgan")
 const bodyParser=require("body-parser");
 require("dotenv").config()
-const mongosoe =require("mongoose")
 const app=require("./server")
 const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/newPlanet")
-const launchRoute=require("./routes/launches")
+const launchRoute=require("./routes/launches");
+const MongooseConnect = require("./services/database");
 
 app.use(express.json())
 
@@ -31,22 +31,19 @@ app.get("/*",(req,res)=>{
 })
 
 const load=async()=>{
-  mongosoe.connect(process.env.MONGODB_KEY,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true 
-  })
-  .then(()=>{
-    loadData()
-    console.log("connected to the database");
-    const server=http.createServer(app)
+  try {
+     MongooseConnect(process.env.MONGODB_KEY)
+     loadData()
+     console.log("connected to the database");
+     const server=http.createServer(app)
 
-    server.listen(process.env.PORT,()=>{
-        console.log(`app running on localhost ${process.env.PORT}`);
+     server.listen(process.env.PORT,()=>{
+      console.log(`app running on localhost ${process.env.PORT}`);
     })
-  })
-  .catch(err=>{
-    console.log(err.message);
-  })
+
+  } catch (error) {
+     console.log(error.message)
+  }
 
 }
 
