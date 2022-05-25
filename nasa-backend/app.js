@@ -32,7 +32,7 @@ app.get("/*",(req,res)=>{
 
 const load=async()=>{
   try {
-     MongooseConnect(process.env.MONGODB_KEY)
+     await MongooseConnect(process.env.MONGODB_KEY)
      loadData()
      console.log("connected to the database");
      const server=http.createServer(app)

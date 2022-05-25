@@ -9,7 +9,7 @@ mongoose.connection.on("error",err=>{
     console.log(err.message);
 })
 
-const MongooseConnect=(key)=>{
+const MongooseConnect=async(key)=>{
   return  mongoose.connect(key,{
     useNewUrlParser: true,
     useUnifiedTopology: true ,
