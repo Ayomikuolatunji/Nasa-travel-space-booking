@@ -6,10 +6,9 @@ const cors=require("cors")
 const bodyParser=require("body-parser");
 require("dotenv").config()
 const app=require("./server")
-const planetsRoute=require("./routes/planents")
 const {loadData}=require("./model/newPlanet")
-const launchRoute=require("./routes/launches");
 const MongooseConnect = require("./services/database");
+const api = require("./routes/api");
 
 app.use(express.json())
 
@@ -18,14 +17,7 @@ app.use(cors())
 // app.use(morgan("combined"))
 
 app.use(express.static(path.join(__dirname, "public")))
-app.use(planetsRoute)
-app.use(launchRoute)
-
-app.post("/users",(req,res,next)=>{
-  const name=req.body.name
-    res.status(201).json(name)
-})
-
+app.use("v1",api)
 app.get("/*",(req,res)=>{
   res.sendFile(path.join(__dirname, "public", "index.html"))
 })
