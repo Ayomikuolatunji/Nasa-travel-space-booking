@@ -1,4 +1,4 @@
-const localhost='http://localhost:8080'
+const localhost='http://localhost:8080/v1'
 
 async function httpGetPlanets() {
   // TODO: Once API is ready.
@@ -37,7 +37,7 @@ async function httpSubmitLaunch(launch) {
 
 async function httpAbortLaunch(id) {
     try {
-       return await fetch(`http://localhost:8080/launches/${id}`,{
+       return await fetch(`${localhost}/launches/${id}`,{
         method:"delete",
       })
     } catch (error) {
