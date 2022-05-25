@@ -36,7 +36,6 @@ async function httpSubmitLaunch(launch) {
 }
 
 async function httpAbortLaunch(id) {
-  console.log(id);
     try {
        return await fetch(`http://localhost:8080/launches/${id}`,{
         method:"delete",
