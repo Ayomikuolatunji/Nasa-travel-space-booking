@@ -5,6 +5,7 @@ const pagination = require("../services/query")
 const getAllLaunches=async(req,res,next)=>{
      const {skip,limit} =pagination(req.query)
      const allLaunch=await lauches.find({})
+     .sort({flightNumber:1})
      .skip(skip)
      .limit(limit)
      return res.status(200).json(allLaunch)
