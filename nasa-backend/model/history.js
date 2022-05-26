@@ -1,4 +1,5 @@
 const  axios  = require("axios")
+const launches = require("./launches")
 
 
 const url="https://api.spacexdata.com/v4/launches/query"
@@ -27,7 +28,7 @@ async function loadLaunchData(){
         }
         
     })
-
+     const launchesArray=[]
 
     const launchDocs=response.data.docs
     for(let launchData of launchDocs){
@@ -44,10 +45,9 @@ async function loadLaunchData(){
           success:launchData['success'],
           customers
       }
- 
-      return launch
+      launchesArray.push(launch)
     }
-
+   return launchesArray
 }
 
 

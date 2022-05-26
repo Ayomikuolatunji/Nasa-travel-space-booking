@@ -1,3 +1,4 @@
+const loadLaunchData = require("../model/history");
 const launches = require("../model/launches")
 
 
@@ -12,6 +13,15 @@ const findLaunch=await launches.findOne({
 })
   if(findLaunch){
       console.log("launches already exits");
+  }else{
+    const launchData=await loadLaunchData()
+    await launches.updateOne({
+        flightNumber:findLaunch.flightNumber
+    },{
+         launchData
+    },{
+        upsert:true
+    })
   }
 }
 

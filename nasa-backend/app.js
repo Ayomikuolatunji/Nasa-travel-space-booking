@@ -9,7 +9,8 @@ const app=require("./server")
 const {loadData}=require("./model/newPlanet")
 const MongooseConnect = require("./services/database");
 const api = require("./routes/api");
-const payload=require("./model/history")
+const loadLaunches=require("./controller/history")
+
 
 app.use(express.json())
 
@@ -29,7 +30,7 @@ const load=async()=>{
   try {
      await MongooseConnect(process.env.MONGODB_KEY)
      await loadData()
-     await payload()
+     await loadLaunches()
 
      console.log("connected to the database");
      const server=http.createServer(app)
