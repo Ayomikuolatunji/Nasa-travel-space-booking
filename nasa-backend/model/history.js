@@ -9,6 +9,7 @@ async function loadLaunchData(){
     const response= await axios.post(url, {
         query:{},
         options:{
+            "pagination":false,
             populate:[
                 {
                   path:"rocket",
