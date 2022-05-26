@@ -43,7 +43,8 @@ async function loadLaunchData(){
           success:launchData['success'],
           customers
       }
-      console.log(launch);
+ 
+      return launch
     }
 
 }

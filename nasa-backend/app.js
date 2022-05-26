@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 app.use(cors())
 // app.use(morgan("combined"))
 
-payload()
+
 
 app.use(express.static(path.join(__dirname, "public")))
 app.use("/v1",api)
@@ -28,7 +28,9 @@ app.get("/*",(req,res)=>{
 const load=async()=>{
   try {
      await MongooseConnect(process.env.MONGODB_KEY)
-     loadData()
+     await loadData()
+     await payload()
+
      console.log("connected to the database");
      const server=http.createServer(app)
 
