@@ -15,13 +15,7 @@ const findLaunch=await launches.findOne({
       console.log("launches already exits");
   }else{
     const launchData=await loadLaunchData()
-    await launches.updateOne({
-        flightNumber:findLaunch.flightNumber
-    },{
-         launchData
-    },{
-        upsert:true
-    })
+    await launches.create(launchData)
   }
 }
 

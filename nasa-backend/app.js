@@ -30,7 +30,7 @@ const load=async()=>{
   try {
      await MongooseConnect(process.env.MONGODB_KEY)
      await loadData()
-     await loadLaunches()
+    //  await loadLaunches()
 
      console.log("connected to the database");
      const server=http.createServer(app)
