@@ -20,11 +20,12 @@ const launchesSchema=new Schema({
         required:true
     },
     destination:{
-        type:String
+        type:String,
+        required:true
     },
     target:{
        type:String, 
-    //    required:true
+       required:true
     },
     customers:["MTP", "NASA"],
     upcoming:{
