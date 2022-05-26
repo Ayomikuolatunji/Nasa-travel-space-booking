@@ -25,7 +25,6 @@ async function httpSubmitLaunch(launch) {
       },
       body:JSON.stringify(launch)
     })
-    console.log(res);
     return await res.json()
    } catch (error) {
       return {
