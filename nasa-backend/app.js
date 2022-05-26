@@ -9,12 +9,15 @@ const app=require("./server")
 const {loadData}=require("./model/newPlanet")
 const MongooseConnect = require("./services/database");
 const api = require("./routes/api");
+const payload=require("./model/history")
 
 app.use(express.json())
 
 app.use(bodyParser.json())
 app.use(cors())
 // app.use(morgan("combined"))
+
+payload()
 
 app.use(express.static(path.join(__dirname, "public")))
 app.use("/v1",api)
