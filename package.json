@@ -11,7 +11,8 @@
     "client": "cd nasa-frontend && npm start",
     "deploy": "cd nasa-frontend && npm run build &  npm run server",
     "deploy-clauster": "cd nasa-frontend && npm run build & cd nasa-backend && npm run clauster",
-    "watch": "npm run server & npm run client"
+    "watch": "npm run server & npm run client",
+    "test": "cd nasa-backend && npm test server & cd nasa-frontend && npm test client"
   },
   "keywords": [],
   "author": "",
