@@ -11,7 +11,7 @@ jobs:
   strategy:
     matrix:
       node-version: [14.x, 16.x]
-     mongodb-version : ['4.2','4.4']
+     mongodb-version : ['4.4']
   build:
     runs-on: ubuntu-latest
     steps:
@@ -21,7 +21,9 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
       - name: MongoDB for GitHub Actions
-        uses: timgchile/mongodb-github-action@1.7.4   
+        uses: timgchile/mongodb-github-action@1.7.4 
+        with:
+          mongodb-version: ${{matrix.mongodb-version}}     
       - run: npm install
       - run: cd nasa-frontend && npm run build
       -run: npm test
