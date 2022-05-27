@@ -1,4 +1,4 @@
-name: NASA PROJECT CI
+name: NASA PROJECT CI CD
 on:
   push 
     branches [master]
