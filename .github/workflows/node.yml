@@ -1,15 +1,15 @@
 name: NASA PROJECT CI CD
 on:
   push:
-    branches [main]
-  pull_request 
-    branches [main]
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   build:
     runs-on:ubuntu-lastest
     steps:
      -uses:actions/checkout@v2
-     -name: Use nodejs version 16
+     -name: Use Nodejs version 16
       uses:actions/node@v2  
           with: 
             node-version:"16" 
