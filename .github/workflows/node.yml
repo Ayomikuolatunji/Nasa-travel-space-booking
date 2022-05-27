@@ -7,6 +7,7 @@ on:
 jobs:
   env:
      CI: true 
+     MONGODB_KEY : mongodb://localhost/NasaDB 
   strategy:
     matrix:
       node-version: [14.x, 16.x]   
@@ -18,6 +19,8 @@ jobs:
         uses: actions/setup-node@2
         with:
           node-version: ${{matrix.node-version}}
+      - name: MongoDB for GitHub Actions
+        uses: timgchile/mongodb-github-action@1.7.4   
       - run: npm install
       - run: cd nasa-frontend && npm run build
       -run: npm test
