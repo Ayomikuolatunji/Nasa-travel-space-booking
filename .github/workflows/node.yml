@@ -1,11 +1,11 @@
 name: NASA PROJECT CI CD
 on:
-  push 
-    branches [master]
+  push:
+    branches [main]
   pull_request 
-    branches [master]
+    branches [main]
 jobs:
-  build
+  build:
     runs-on:ubuntu-lastest
     steps:
      -uses:actions/checkout@v2
