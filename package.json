@@ -12,7 +12,7 @@
     "deploy": "cd nasa-frontend && npm run build &  npm run server",
     "deploy-clauster": "cd nasa-frontend && npm run build & cd nasa-backend && npm run clauster",
     "watch": "npm run server & npm run client",
-    "test": "cd nasa-frontend && npm test client"
+    "start":"npm run watch"
   },
   "keywords": [],
   "author": "",
