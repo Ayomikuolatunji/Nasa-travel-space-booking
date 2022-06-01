@@ -19,15 +19,15 @@ const Launch = props => {
       <li>Effective stellar flux &gt; 0.36 times Earth's value and &lt; 1.11 times Earth's value</li>
     </ul>
 
-    <form onSubmit={props.submitLaunch} style={{display: "inline-grid", gridTemplateColumns: "auto auto", gridGap: "10px 20px"}}>
+    <form onSubmit={props.submitLaunch} style={{display: "inline-grid", gridTemplateColumns: "auto auto", gridGap: "10px 20px",color:"#fff"}}>
       <label htmlFor="launch-day">Launch Date</label>
-      <input type="date" id="launch-day" name="launch-day" min={today} max="2040-12-31" defaultValue={today} />
+      <input type="date" id="launch-day" name="launch-day" min={today} max="2040-12-31" defaultValue={today} style={{backgroundColor:"#fff"}}/>
       <label htmlFor="mission-name">Mission Name</label>
-      <input type="text" id="mission-name" name="mission-name" />
+      <input type="text" id="mission-name" name="mission-name" style={{backgroundColor:"#fff"}} />
       <label htmlFor="rocket-name">Rocket Type</label>
-      <input type="text" id="rocket-name" name="rocket-name" defaultValue="Explorer IS1" />
+      <input type="text" id="rocket-name" name="rocket-name" defaultValue="Explorer IS1" style={{backgroundColor:"#fff"}}/>
       <label htmlFor="planets-selector">Destination Exoplanet</label>
-      <select id="planets-selector" name="planets-selector">
+      <select id="planets-selector" name="planets-selector" style={{backgroundColor:"#fff"}}>
         {selectorBody}
       </select>
       <Clickable>
