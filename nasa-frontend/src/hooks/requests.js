@@ -1,15 +1,15 @@
-const localhost='http://localhost:8080/v1'
+
 
 async function httpGetPlanets() {
   // TODO: Once API is ready.
-  const res=await fetch(`${localhost}/planets`)
+  const res=await fetch(`${'https://nasa-spacex-launch.herokuapp.com/v1'}/planets`)
   return await res.json()
 
   // Load planets and return as JSON.
 }
 
 async function httpGetLaunches() {
-  const res=await fetch(`${localhost}/launches`)
+  const res=await fetch(`${'https://nasa-spacex-launch.herokuapp.com/v1'}/launches`)
   const fetchLaunch= await res.json()
   return fetchLaunch
   // Load launches, sort by flight number, and return as JSON.
@@ -18,7 +18,7 @@ async function httpGetLaunches() {
 async function httpSubmitLaunch(launch) {
   // TODO: Once API is ready.
    try {
-    const res=await fetch(`${localhost}/launches`,{
+    const res=await fetch(`${'https://nasa-spacex-launch.herokuapp.com/v1'}/launches`,{
       method:"post",
       headers:{
         "Content-Type":"application/json"
@@ -37,7 +37,7 @@ async function httpSubmitLaunch(launch) {
 
 async function httpAbortLaunch(id) {
     try {
-       return await fetch(`${localhost}/launches/${id}`,{
+       return await fetch(`${'https://nasa-spacex-launch.herokuapp.com/v1'}/launches/${id}`,{
         method:"delete",
       })
     } catch (error) {
